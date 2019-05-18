@@ -8,9 +8,8 @@
 require 'faker'
 
 #crear 50 usuarios
-100.times do |row|
-    User.create( nombre: Faker::Name.first_name,
-    id: Faker::Number(10), apellidos: Faker::Name.last_name,
-    direccion: Faker::Address.street_address, telefono: Faker::Number(10))
-end
+#100.times do |row|
+    User.new( nombre: Faker::Name.first_name, apellidos: Faker::Name.last_name,
+    direccion: Faker::Address.street_address, telefono: Faker::Number.number(10))
+#end
 
