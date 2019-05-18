@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_18_012910) do
+ActiveRecord::Schema.define(version: 2019_05_18_020314) do
 
   create_table "orders", force: :cascade do |t|
     t.datetime "fecha"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_05_18_012910) do
     t.text "cassata"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "valor"
   end
 
   create_table "rols", force: :cascade do |t|
