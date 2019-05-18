@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     #get
     def index
         users= User.all
-        render json:users, satatus: 200
+        render json:users, status: 200
     end
     
     #get
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     def updated
         user = User.find(params[:id])
         if user.update(user_params)
-           render json:user, status:updated
+           render json:user, status:200
         else 
             render json:user.errors, status: :unproessable_entity
         end

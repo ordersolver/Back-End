@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
     #get
     def index
         products= Product.all
-        render json:products, satatus: 200
+        render json:products, status: 200
     end
     
     #get
@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
     def updated
         product = Product.find(params[:id])
         if product.update(params[])
-           render json:product, status:updated
+           render json:product, status:200
         else 
             render json:product.errors, status: :unproessable_entity
         end

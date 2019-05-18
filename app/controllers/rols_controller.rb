@@ -3,7 +3,7 @@ class RolsController < ApplicationController
     #get
     def index
         rols= Rol.all
-        render json:rols, satatus: 200
+        render json:rols, status: 200
     end
     
     #get
@@ -24,7 +24,7 @@ class RolsController < ApplicationController
     def updated
         rol = Rol.find(params[:id])
         if rol.update(params[])
-           render json:rol, status:updated
+           render json:rol, status:200
         else 
             render json:rol.errors, status: :unproessable_entity
         end

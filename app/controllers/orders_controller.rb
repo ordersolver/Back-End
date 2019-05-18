@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
     
         def index
             orders= Order.all
-            render json:orders, satatus: 200
+            render json:orders, status: 200
         end
         
         
@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     def updated
         order = Order.find(params[:id])
         if order.update(params[])
-           render json:order, status:updated
+           render json:order, status:200
         else 
             render json:order.errors, status: :unproessable_entity
         end
