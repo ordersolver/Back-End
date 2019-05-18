@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_many :orders
     has_and_belongs_to_many :rols
-    validates_associated :order
+    validates_associated :orders
     validates_associated :rols
 
     validates :tipo_documento, presence: true, length: { is: 2 }
