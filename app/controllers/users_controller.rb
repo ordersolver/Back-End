@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
 
     def create
-        user = User.new(params[:id],params[:tipo_documento], params[:nombre], params[:apellidos],params[:direccion],params[:telefono])
+        user = User.new(user_params)
         if user.save
             render json: user,satus:201
         else
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
     def updated
         user = User.find(params[:id])
-        if user.update(params[])
+        if user.update(user_params)
            render json:user, status:updated
         else 
             render json:user.errors, status: :unproessable_entity
@@ -34,6 +34,11 @@ class UsersController < ApplicationController
     def destroy 
         user = User.find(params[:id])
         user.destroy
+    end
+
+    private
+    def user_params
+        params.require(:user).permit(:id,:tipo_documento,:nombre,:apellidos,:direccion,:telefono)
     end
 
 end
