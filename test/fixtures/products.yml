@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyText
+  categoria: MyText
+  descripcion: MyText
+  medidas: MyText
+  grosor: MyText
+  densidad: MyText
+  tipo_tela: MyText
+  lamina: MyText
+  cassata: MyText
+
+two:
+  nombre: MyText
+  categoria: MyText
+  descripcion: MyText
+  medidas: MyText
+  grosor: MyText
+  densidad: MyText
+  tipo_tela: MyText
+  lamina: MyText
+  cassata: MyText
