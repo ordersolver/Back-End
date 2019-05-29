@@ -2,13 +2,13 @@ class UsersController < ApplicationController
 
     #get
     def index
-        users= User.all
+        users= User.all.paginate(page: params[:page], per_page: 15)
         render json:users, status: 200
     end
     
     #get
     def show
-        user = User.find(params[:id]).paginate(:page => params[:page], :per_page => 15)
+        user = User.find(params[:id])
         render json: user, status: 200
     end
 

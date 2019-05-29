@@ -1,13 +1,13 @@
 class OrdersController < ApplicationController
     
         def index
-            orders= Order.all
+            orders= Order.all.paginate(page: params[:page], per_page: 15)
             render json:orders, status: 200
         end
         
         
         def show
-            order = Order.find(params[:id]).paginate(page: params[:page], per_page: 15)
+            order = Order.find(params[:id])
             render json: order, status: 200
         end
     

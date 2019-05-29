@@ -2,13 +2,13 @@ class ProductsController < ApplicationController
 
     #get
     def index
-        products= Product.all
+        products= Product.all.paginate(page: params[:page], per_page: 15)
         render json:products, status: 200
     end
     
     #get
     def show
-        product = Product.find(params[:id]).paginate(page: params[:page], per_page: 15)
+        product = Product.find(params[:id])
         render json: product, status: 200
     end
 
