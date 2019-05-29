@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id          :integer          not null, primary key
+#  cassata     :text
+#  categoria   :text
+#  densidad    :text
+#  descripcion :text
+#  grosor      :text
+#  lamina      :text
+#  medidas     :text
+#  nombre      :text
+#  tipo_tela   :text
+#  valor       :bigint
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase

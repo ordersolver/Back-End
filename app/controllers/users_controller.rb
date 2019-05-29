@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     
     #get
     def show
-        user = User.find(params[:id])
+        user = User.find(params[:id]).paginate(:page => params[:page], :per_page => 15)
         render json: user, status: 200
     end
 
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
         end
     end
 
-    def updated
+    def update
         user = User.find(params[:id])
         if user.update(user_params)
            render json:user, status:200

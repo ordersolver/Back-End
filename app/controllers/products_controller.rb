@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     
     #get
     def show
-        product = Product.find(params[:id])
+        product = Product.find(params[:id]).paginate(page: params[:page], per_page: 15)
         render json: product, status: 200
     end
 
@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
         end
     end
 
-    def updated
+    def update
         product = Product.find(params[:id])
         if product.update(params[])
            render json:product, status:200

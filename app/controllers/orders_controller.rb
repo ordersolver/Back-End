@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
         
         
         def show
-            order = Order.find(params[:id])
+            order = Order.find(params[:id]).paginate(page: params[:page], per_page: 15)
             render json: order, status: 200
         end
     
@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
         end
     end
     
-    def updated
+    def update
         order = Order.find(params[:id])
         if order.update(params[])
            render json:order, status:200
