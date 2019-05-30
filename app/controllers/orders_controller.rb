@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+    before_action :authenticate_user, only: [:index, :show, :create, :updated, :destroy]
     
         def index
             orders= Order.all
