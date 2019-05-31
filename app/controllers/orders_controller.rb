@@ -2,7 +2,11 @@ class OrdersController < ApplicationController
     before_action :authenticate_user, only: [:index, :show, :create, :updated, :destroy]
     
         def index
-            orders= Order.all
+            if params[:per_page]
+                users= User.paginate(page: params[:page], per_page: params[:per_page])
+            else
+                users=users= User.paginate(page: params[:page], per_page: 15)
+            end
             render json:orders, status: 200
         end
         

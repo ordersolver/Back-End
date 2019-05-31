@@ -3,7 +3,11 @@ class ProductsController < ApplicationController
     
     #get
     def index
-        products= Product.all
+        if params[:per_page]
+            users= User.paginate(page: params[:page], per_page: params[:per_page])
+        else
+            users=users= User.paginate(page: params[:page], per_page: 15)
+        end
         render json:products, status: 200
     end
     
