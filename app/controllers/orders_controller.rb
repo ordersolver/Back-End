@@ -1,7 +1,11 @@
 class OrdersController < ApplicationController
     
         def index
-            orders= Order.all.paginate(page: params[:page], per_page: 15)
+            if params[:per_page]
+                users= User.paginate(page: params[:page], per_page: params[:per_page])
+            else
+                users=users= User.paginate(page: params[:page], per_page: 15)
+            end
             render json:orders, status: 200
         end
         
@@ -20,7 +24,7 @@ class OrdersController < ApplicationController
         end
     end
     
-    def update
+    def updated
         order = Order.find(params[:id])
         if order.update(params[])
            render json:order, status:200

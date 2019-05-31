@@ -2,7 +2,12 @@ class UsersController < ApplicationController
 
     #get
     def index
-        users= User.all.paginate(page: params[:page], per_page: 15)
+        if params[:per_page]
+            users= User.paginate(page: params[:page], per_page: params[:per_page])
+        else
+            users=users= User.paginate(page: params[:page], per_page: 15)
+        end
+        
         render json:users, status: 200
     end
     
@@ -22,7 +27,7 @@ class UsersController < ApplicationController
         end
     end
 
-    def update
+    def updated
         user = User.find(params[:id])
         if user.update(user_params)
            render json:user, status:200

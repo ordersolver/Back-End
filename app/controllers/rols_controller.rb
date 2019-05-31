@@ -21,7 +21,7 @@ class RolsController < ApplicationController
         end
     end
 
-    def update
+    def updated
         rol = Rol.find(params[:id])
         if rol.update(params[])
            render json:rol, status:200

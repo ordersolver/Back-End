@@ -2,7 +2,11 @@ class ProductsController < ApplicationController
 
     #get
     def index
-        products= Product.all.paginate(page: params[:page], per_page: 15)
+        if params[:per_page]
+            users= User.paginate(page: params[:page], per_page: params[:per_page])
+        else
+            users=users= User.paginate(page: params[:page], per_page: 15)
+        end
         render json:products, status: 200
     end
     
@@ -21,7 +25,7 @@ class ProductsController < ApplicationController
         end
     end
 
-    def update
+    def updated
         product = Product.find(params[:id])
         if product.update(params[])
            render json:product, status:200
