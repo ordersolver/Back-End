@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_18_020314) do
+ActiveRecord::Schema.define(version: 2019_05_29_003731) do
 
   create_table "orders", force: :cascade do |t|
     t.datetime "fecha"
