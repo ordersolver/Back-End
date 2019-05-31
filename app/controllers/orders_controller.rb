@@ -3,9 +3,9 @@ class OrdersController < ApplicationController
     
         def index
             if params[:per_page]
-                users= User.paginate(page: params[:page], per_page: params[:per_page])
+                orders= Order.paginate(page: params[:page], per_page: params[:per_page])
             else
-                users=users= User.paginate(page: params[:page], per_page: 15)
+                orders= Order.paginate(page: params[:page], per_page: 15)
             end
             render json:orders, status: 200
         end
@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     def create
         order = Order.new(params[:fecha], params[:estado], params[:direccion_entrega],params[:valor])
         if order.save
-            render json: order,satus:201
+            render json: order,status:201
         else
             render json:order.errors, status: :unproessable_entity
         end

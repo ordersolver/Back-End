@@ -6,7 +6,7 @@ class UsersController < ApplicationController
         if params[:per_page]
             users= User.paginate(page: params[:page], per_page: params[:per_page])
         else
-            users=users= User.paginate(page: params[:page], per_page: 15)
+            users= User.paginate(page: params[:page], per_page: 15)
         end
         
         render json:users, status: 200
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     def create
         user = User.new(user_params)
         if user.save
-            render json: user,satus:201
+            render json: user,status:201
         else
             render json:user.errors, status: :unproessable_entity
         end

@@ -15,7 +15,7 @@ class RolsController < ApplicationController
     def create
         rol = Rol.new(params[:sinonimo], params[:descripcion])
         if rol.save
-            render json: rol,satus:201
+            render json: rol,status:201
         else
             render json:rol.errors, status: :unproessable_entity
         end

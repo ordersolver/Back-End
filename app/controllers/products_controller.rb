@@ -4,9 +4,9 @@ class ProductsController < ApplicationController
     #get
     def index
         if params[:per_page]
-            users= User.paginate(page: params[:page], per_page: params[:per_page])
+            products= Product.paginate(page: params[:page], per_page: params[:per_page])
         else
-            users=users= User.paginate(page: params[:page], per_page: 15)
+            products= Product.paginate(page: params[:page], per_page: 15)
         end
         render json:products, status: 200
     end
@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
     def create
         product = Product.new(params[:nombre], params[:categoria], params[:descripcion],params[:medidas],params[:gorsor],params[:densidad],params[:tipo_tela],params[:lamina],params[:cassata],params[:valor])
         if product.save
-            render json: product,satus:201
+            render json: product,status:201
         else
             render json:product.errors, status: :unproessable_entity
         end

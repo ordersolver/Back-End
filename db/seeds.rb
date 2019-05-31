@@ -15,14 +15,17 @@ end
 
 #crear 30 productos
 30.times do |row|
-    Product.create(nombre: Faker::Commerce.product_name, 
-    categoria: Faker::Commerce.department, valor: Faker::Commerce.price)
+    product = Product.new(nombre: Faker::Commerce.product_name, 
+              categoria: Faker::Commerce.department, valor: Faker::Commerce.price)
+    product.save
 end
 
 #crear 50 ordenes
 50.times do |row|
-    Order.create(fecha: Faker::Date.backward(30), estado: "entregado", 
-    direccion_entrega: Faker::Address.street_address, valor: Faker::Commerce.price)
+    order = Order.new(fecha: Faker::Date.backward(30), estado: "entregado", 
+    direccion_entrega: Faker::Address.street_address, valor: Faker::Commerce.price, user_id: 1)
+    order.products= Product.all.sample(2)
+    order.save
 end
 
 #crear roles
