@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get 'users/current' => 'users#current'
   post "users/create"
   put "users/updated"
+  put "users/upgrade"
   delete "users/destroy"
   
   get "orders/index"
