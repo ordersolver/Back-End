@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-    before_action :authenticate_user, only: [:index, :show, :create, :updated, :destroy]
+    before_action :authenticate_user, only: [:index, :create, :updated, :destroy]
     
         def index
             if params[:per_page]
@@ -11,10 +11,15 @@ class OrdersController < ApplicationController
         end
         
         
-        def show
-            order = Order.find(params[:id])
-            render json: order, status: 200
+    def show
+        @orders = Order.where(nil)
+        filtering_params().each do |key, value|
+            @orders = @orders.public_send(key, value) if value.present? and key.present?
         end
+        if @orders != Order.where(nil)
+            render json:@orders, status: 200
+        end         
+    end
     
     def create
         order = Order.new(params[:fecha], params[:estado], params[:direccion_entrega],params[:valor])
@@ -39,6 +44,9 @@ class OrdersController < ApplicationController
         order.destroy
     end
 
+    def filtering_params
+        params.permit(:estado, :id)
+    end
 
 
 end

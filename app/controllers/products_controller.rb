@@ -13,8 +13,13 @@ class ProductsController < ApplicationController
     
     #get
     def show
-        product = Product.find(params[:id])
-        render json: product, status: 200
+        @products = Product.where(nil)
+        filtering_params().each do |key, value|
+          @products = @products.public_send(key, value) if value.present? and key.present?
+        end
+        if @products != Product.where(nil)
+            render json:@products, status: 200
+        end         
     end
 
     def create
@@ -40,4 +45,7 @@ class ProductsController < ApplicationController
         product.destroy
     end
     
+    def filtering_params
+        params.permit(:nombre, :categoria, :id, :starts_with)
+    end
 end
