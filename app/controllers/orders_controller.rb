@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
         if order.save
             render json: order,status:201
         else
-            render json:order.errors, status: :unproessable_entity
+            render json:order.errors, status: :unprocessable_entity
         end
     end
     
@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
         if order.update(params[])
            render json:order, status:200
         else 
-            render json:order.errors, status: :unproessable_entity
+            render json:order.errors, status: :unprocessable_entity
         end
     end
 

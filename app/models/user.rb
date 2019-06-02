@@ -5,6 +5,7 @@
 #  id              :integer          not null, primary key
 #  apellidos       :text
 #  direccion       :text
+#  email           :string
 #  nombre          :text
 #  password_digest :string
 #  telefono        :text
