@@ -31,5 +31,5 @@ test:
 production:
   <<: *default
   database: ordersolver_production
-  username: myapp
+  username: ordersolver
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
