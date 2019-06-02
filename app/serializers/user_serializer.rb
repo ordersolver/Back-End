@@ -5,6 +5,7 @@
 #  id              :integer          not null, primary key
 #  apellidos       :text
 #  direccion       :text
+#  email           :string
 #  nombre          :text
 #  password_digest :string
 #  telefono        :text
@@ -15,5 +16,5 @@
 #
 
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :no_id, :nombre, :apellidos, :tipo_documento, :direccion, :telefono
+  attributes :id, :nombre, :apellidos, :tipo_documento, :no_id, :email, :direccion, :telefono
 end
