@@ -13,7 +13,7 @@ class RolsController < ApplicationController
     end
 
     def create
-        rol = Rol.new(params[:sinonimo], params[:descripcion])
+        rol = Rol.new(user_params)
         if rol.save
             render json: rol,status:201
         else
@@ -23,7 +23,7 @@ class RolsController < ApplicationController
 
     def updated
         rol = Rol.find(params[:id])
-        if rol.update(params[])
+        if rol.update(user_params)
            render json:rol, status:200
         else 
             render json:rol.errors, status: :unprocessable_entity
@@ -33,6 +33,10 @@ class RolsController < ApplicationController
     def destroy 
         rol = Rol.find(params[:id])
         rol.destroy
+    end
+
+    def user_params
+        params.require(:rol).permit(:rol_name, :descripcion)
     end
 
 end

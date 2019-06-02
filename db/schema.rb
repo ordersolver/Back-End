@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_02_004034) do
+ActiveRecord::Schema.define(version: 2019_06_02_031834) do
 
   create_table "orders", force: :cascade do |t|
     t.datetime "fecha"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_06_02_004034) do
   end
 
   create_table "rols", force: :cascade do |t|
-    t.integer "sinonimo"
+    t.string "rol_name"
     t.string "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

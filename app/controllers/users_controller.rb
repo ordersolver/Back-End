@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :authenticate_user, only: [:show, :updated, :destroy]
+    before_action :authenticate_user, only: [ :index, :show, :updated, :destroy]
     before_action :set_user, only: [:show]
 
     #get
@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 
     def create
         user = User.new(user_params)
+        user.rols<<Rol.find(1)
         if user.save
             render json: user,status:201
         else
@@ -38,8 +39,34 @@ class UsersController < ApplicationController
         end
     end
 
+    def upgrade
+        user = User.find(params[:id])
+        rol= user.rol_ids
+        if params[:user]=="1" and params[:admin]=="1"
+            if rol.count==1
+                if rol.last==1
+                    user.rols<<Rol.find(2)
+                else
+                    user.rols<<Rol.find(1)
+                end
+            end
+        elsif params[:admin]=="1"
+            user.rols.delete(Rol.find(1))
+            if rol.count==1 and rol.last==1
+                user.rols<<Rol.find(2)
+            end
+        else
+            user.rols.delete(Rol.find(2))
+            if rol.count==1 and rol.last==2
+                user.rols<<Rol.find(1)
+            end
+        end
+    end
+
     def destroy 
         user = User.find(params[:id])
+        user.rols.delete(Rol.find(1))
+        user.rols.delete(Rol.find(2))
         user.destroy
     end
 

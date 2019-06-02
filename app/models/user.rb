@@ -28,4 +28,6 @@ class User < ApplicationRecord
     validates :apellidos, presence: true, format: { with: /\A[a-zA-Z]+\z/,
     message: "only allows letters" }
     validates :telefono, numericality: { only_integer: true }, length: { in: 7..10 }
+    validates :no_id, uniqueness: true
+    validates :email, uniqueness: true
 end
