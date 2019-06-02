@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    before_action :authenticate_user, only: [:index, :show, :updated, :destroy]
+    before_action :authenticate_user, only: [:show, :updated, :destroy]
+    before_action :set_user, only: [:show]
 
     #get
     def index
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
         if user.save
             render json: user,status:201
         else
-            render json:user.errors, status: :unproessable_entity
+            render json:user.errors, status: :unprocessable_entity
         end
     end
 
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
         if user.update(user_params)
            render json:user, status:200
         else 
-            render json:user.errors, status: :unproessable_entity
+            render json:user.errors, status: :unprocessable_entity
         end
     end
 
@@ -43,6 +44,10 @@ class UsersController < ApplicationController
     end
 
     private
+    def set_user
+        @user = User.find(params[:id])
+    end
+
     def user_params
         params.require(:user).permit(:id, :tipo_documento, :no_id, :nombre, :apellidos, :email, :direccion, :telefono, :password, :password_confirmation)
     end

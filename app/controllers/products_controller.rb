@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
         if product.save
             render json: product,status:201
         else
-            render json:product.errors, status: :unproessable_entity
+            render json:product.errors, status: :unprocessable_entity
         end
     end
 
@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
         if product.update(params[])
            render json:product, status:200
         else 
-            render json:product.errors, status: :unproessable_entity
+            render json:product.errors, status: :unprocessable_entity
         end
     end
 

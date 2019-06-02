@@ -17,7 +17,7 @@ class RolsController < ApplicationController
         if rol.save
             render json: rol,status:201
         else
-            render json:rol.errors, status: :unproessable_entity
+            render json:rol.errors, status: :unprocessable_entity
         end
     end
 
@@ -26,7 +26,7 @@ class RolsController < ApplicationController
         if rol.update(params[])
            render json:rol, status:200
         else 
-            render json:rol.errors, status: :unproessable_entity
+            render json:rol.errors, status: :unprocessable_entity
         end
     end
 
