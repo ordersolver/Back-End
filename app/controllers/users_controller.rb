@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :authenticate_user, only: [ :index, :show, :updated, :destroy]
+    before_action :authenticate_user, only: [:show, :updated, :destroy, :current]
     before_action :set_user, only: [:show]
 
     #get
@@ -19,6 +19,9 @@ class UsersController < ApplicationController
         render json: user, status: 200
     end
 
+    def current
+        render json: current_user
+    end
 
     def create
         user = User.new(user_params)
