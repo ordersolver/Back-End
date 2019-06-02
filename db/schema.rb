@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_29_003731) do
+ActiveRecord::Schema.define(version: 2019_06_02_000247) do
 
   create_table "orders", force: :cascade do |t|
     t.datetime "fecha"
@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(version: 2019_05_29_003731) do
     t.text "telefono"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.string "no_id"
   end
 
 end
