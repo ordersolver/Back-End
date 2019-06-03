@@ -2,7 +2,7 @@
 #
 # Table name: orders
 #
-#  id                :integer          not null, primary key
+#  id                :bigint           not null, primary key
 #  direccion_entrega :text
 #  estado            :string
 #  fecha             :datetime

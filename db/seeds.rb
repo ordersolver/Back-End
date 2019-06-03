@@ -10,7 +10,7 @@ require 'faker'
 
 #crear roles
 if  !Rol.exists?
-    rols=[{ descripcion:'administrador', sinonimo: 1  }, { descripcion: 'cliente',sinonimo: 2 }]
+    rols=[{ descripcion:'administrador', rol_name: 1  }, { descripcion: 'cliente',rol_name: 2 }]
     puts rols
     for rol in rols
       Rol.create(rol)
