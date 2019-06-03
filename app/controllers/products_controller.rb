@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-    before_action :authenticate_user, only: [:create, :updated, :destroy]
+    before_action :authenticate_user, only: [  :updated]
     
     #get
     def index
@@ -13,12 +13,17 @@ class ProductsController < ApplicationController
     
     #get
     def show
-        product = Product.find(params[:id])
-        render json: product, status: 200
+        @products = Product.where(nil)
+        filtering_params().each do |key, value|
+          @products = @products.public_send(key, value) if value.present? and key.present?
+        end
+        if @products != Product.where(nil)
+            render json:@products, status: 200
+        end         
     end
 
     def create
-        product = Product.new(params[:nombre], params[:categoria], params[:descripcion],params[:medidas],params[:gorsor],params[:densidad],params[:tipo_tela],params[:lamina],params[:cassata],params[:valor])
+        product = Product.new(user_params)
         if product.save
             render json: product,status:201
         else
@@ -28,7 +33,7 @@ class ProductsController < ApplicationController
 
     def updated
         product = Product.find(params[:id])
-        if product.update(params[])
+        if product.update(user_params)
            render json:product, status:200
         else 
             render json:product.errors, status: :unprocessable_entity
@@ -39,5 +44,13 @@ class ProductsController < ApplicationController
         product = Product.find(params[:id])
         product.destroy
     end
-    
+
+    private
+    def user_params
+        params.require(:product).permit(:nombre, :categoria, :descripcion, :medidas, :grosor, :densidad, :tipo_tela, :lamina, :cassata, :valor)
+    end
+
+    def filtering_params
+        params.permit(:nombre, :categoria, :id, :starts_with)
+    end
 end

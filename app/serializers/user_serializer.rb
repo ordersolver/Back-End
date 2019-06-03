@@ -16,5 +16,11 @@
 #
 
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :nombre, :apellidos, :tipo_documento, :no_id, :email, :direccion, :telefono
+  attributes :id, :nombre, :apellidos, :tipo_documento, :no_id, :email, :direccion, :telefono, :rols
+      
+      def rols
+        self.object.rols.map do |rol|
+            {rolId: rol.id, rolName: rol.descripcion}
+        end 
+      end
 end

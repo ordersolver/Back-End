@@ -39,8 +39,10 @@ Rails.application.routes.draw do
   post 'user_token' => 'user_token#create'
   get "users/index"
   get "users/show"
+  get 'users/current' => 'users#current'
   post "users/create"
   put "users/updated"
+  put "users/upgrade"
   delete "users/destroy"
   
   get "orders/index"

@@ -24,4 +24,8 @@ class Order < ApplicationRecord
     validates :estado, presence: true
     validates :direccion_entrega, presence: true
     validates :valor, presence: true, numericality: { greater_than: 0 }
+
+    scope :estado, ->(estado) { where estado: estado }
+    scope :id, ->(id) { where id: id }
+
 end
