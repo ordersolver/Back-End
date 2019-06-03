@@ -27,4 +27,10 @@ class Product < ApplicationRecord
     message: "only allows letters" }
     validates :valor, presence: true, numericality: { greater_than: 0 }
     validates :nombre, uniqueness: true
+
+    scope :nombre, ->(nombre) { where nombre: nombre }
+    scope :categoria, ->(categoria) { where categoria: categoria }
+    scope :id, ->(id) { where id: id }
+    scope :starts_with, ->(nombre){where "nombre like ? ","%#{nombre}%" }
+
 end
