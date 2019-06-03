@@ -26,5 +26,5 @@ class Product < ApplicationRecord
     validates :categoria, format: { with: /\A[\D]+\z/,
     message: "only allows letters" }
     validates :valor, presence: true, numericality: { greater_than: 0 }
-    
+    validates :nombre, uniqueness: true
 end
