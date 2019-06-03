@@ -3,9 +3,9 @@ class OrdersController < ApplicationController
 
     def index
         if params[:per_page]
-            orders= Order.paginate(page: params[:page], per_page: params[:per_page])
+            orders= Order.includes(:products,:user).paginate(page: params[:page], per_page: params[:per_page])
         else
-            orders= Order.paginate(page: params[:page], per_page: 15)
+            orders= Order.includes(:products,:user).paginate(page: params[:page], per_page: 15)
         end
         render json:orders, status: 200
     end
