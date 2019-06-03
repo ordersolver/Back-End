@@ -4,7 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  descripcion :string
-#  sinonimo    :integer
+#  rol_name    :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
