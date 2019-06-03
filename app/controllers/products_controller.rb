@@ -1,32 +1,42 @@
 class ProductsController < ApplicationController
-
+    before_action :authenticate_user, only: [  :updated]
+    
     #get
     def index
-        products= Product.all
-        render json:products, satatus: 200
+        if params[:per_page]
+            products= Product.paginate(page: params[:page], per_page: params[:per_page])
+        else
+            products= Product.paginate(page: params[:page], per_page: 15)
+        end
+        render json:products, status: 200
     end
     
     #get
     def show
-        product = Product.find(params[:id])
-        render json: product, status: 200
+        @products = Product.where(nil)
+        filtering_params().each do |key, value|
+          @products = @products.public_send(key, value) if value.present? and key.present?
+        end
+        if @products != Product.where(nil)
+            render json:@products, status: 200
+        end         
     end
 
     def create
-        product = Product.new(params[:nombre], params[:categoria], params[:descripcion],params[:medidas],params[:gorsor],params[:densidad],params[:tipo_tela],params[:lamina],params[:cassata],params[:valor])
+        product = Product.new(user_params)
         if product.save
-            render json: product,satus:201
+            render json: product,status:201
         else
-            render json:product.errors, status: :unproessable_entity
+            render json:product.errors, status: :unprocessable_entity
         end
     end
 
     def updated
         product = Product.find(params[:id])
-        if product.update(params[])
-           render json:product, status:updated
+        if product.update(user_params)
+           render json:product, status:200
         else 
-            render json:product.errors, status: :unproessable_entity
+            render json:product.errors, status: :unprocessable_entity
         end
     end
 
@@ -34,5 +44,13 @@ class ProductsController < ApplicationController
         product = Product.find(params[:id])
         product.destroy
     end
-    
+
+    private
+    def user_params
+        params.require(:product).permit(:nombre, :categoria, :descripcion, :medidas, :grosor, :densidad, :tipo_tela, :lamina, :cassata, :valor)
+    end
+
+    def filtering_params
+        params.permit(:nombre, :categoria, :id, :starts_with)
+    end
 end
