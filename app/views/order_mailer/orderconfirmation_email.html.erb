@@ -1,0 +1,12 @@
+<ht>Hola <%= @user.nombre %> !</ht>
+<p>
+  Acabamos de registrar tu pedido, lo enviaremos tan rapido como sea posible.<br>
+  A continuacion encontraras un resumen de tu pedido:<br>
+  Fecha de solicitud: <%= @order.fecha.strftime("%d/%m/%Y") %> <br>
+  Estado del pedido: <%= @order.estado %> <br>
+  Direccion de entrega: <%= @order.direccion_entrega %> <br>
+  Valor total del pedido: <%= @order.valor %> <br><br>
+
+  Recuerde que espumas M & M es más y mejor descanso
+
+</p>

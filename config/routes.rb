@@ -49,6 +49,8 @@ Rails.application.routes.draw do
   post "orders/create"
   put "orders/updated"
   delete "orders/destroy"
+  get "orders/genpdf"
+  post "orders/confirmation_email"
   
   get "products/index"
   get "products/show"
