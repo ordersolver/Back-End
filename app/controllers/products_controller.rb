@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
         else
             products= Product.paginate(page: params[:page], per_page: 15)
         end
-        render json:products, status: 200
+        render json:products.all.with_attached_image, status: 200
     end
     
     #get
