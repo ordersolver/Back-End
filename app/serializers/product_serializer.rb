@@ -18,6 +18,7 @@
 #
 
 class ProductSerializer < ActiveModel::Serializer
+  include Rails.application.routes.url_helpers
   attributes :id, :nombre, :categoria, :descripcion, :valor,
              :cassata, :densidad, :grosor, :lamina, :medidas,
              :tipo_tela, :image
