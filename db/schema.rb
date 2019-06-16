@@ -22,13 +22,13 @@ ActiveRecord::Schema.define(version: 2019_06_02_031834) do
     t.bigint "valor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "orders_products", id: false, force: :cascade do |t|
-    t.integer "order_id", null: false
-    t.integer "product_id", null: false
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 2019_06_02_031834) do
   end
 
   create_table "rols_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "rol_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "rol_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -71,4 +71,5 @@ ActiveRecord::Schema.define(version: 2019_06_02_031834) do
     t.string "email"
   end
 
+  add_foreign_key "orders", "users"
 end
