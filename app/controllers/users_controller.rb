@@ -5,9 +5,9 @@ class UsersController < ApplicationController
     #get
     def index
         if params[:per_page]
-            users= User.includes(:rols).paginate(page: params[:page], per_page: params[:per_page])
+            users = UsersQuery.new.all.paginate(page: params[:page], per_page: params[:per_page])
         else
-            users= User.includes(:rols).paginate(page: params[:page], per_page: 15)
+            users = UsersQuery.new.all.paginate(page: params[:page], per_page: 15)
         end
         
         render json:users.all.with_attached_avatar, status: 200

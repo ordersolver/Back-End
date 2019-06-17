@@ -1,6 +1,6 @@
 class GoogleLoginController < ApplicationController
     Aud="506919261604-1fkfc1b1kt8dgkgokajl67jq6576c1m0.apps.googleusercontent.com"
-    UserTokenController
+
     def verify
         token = params[:token].to_s
         res=HTTParty.get("https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=#{token}")
