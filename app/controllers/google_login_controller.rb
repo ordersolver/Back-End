@@ -19,7 +19,8 @@ class GoogleLoginController < ApplicationController
                     render json:error
                 end
             else
-                #render json:{"invalid token"} status:400
+                error={error:"invalid token"}
+                render json:error, status:400
             end
         else
             render json:res, status:res.code
