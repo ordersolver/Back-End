@@ -22,7 +22,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'active_model_serializers'
 
-gem "aws-sdk-s3", require: false
+gem 'aws-sdk-s3', require: false
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -54,7 +54,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "prawn", "~> 2.2"
+gem 'prawn', '~> 2.2'
 
-gem "prawn-table", "~> 0.2.2"
-gem "httparty"
+gem 'prawn-table', '~> 0.2.2'
+gem 'httparty'
