@@ -18,7 +18,21 @@
 #
 
 class ProductSerializer < ActiveModel::Serializer
+  include Rails.application.routes.url_helpers
   attributes :id, :nombre, :categoria, :descripcion, :valor,
              :cassata, :densidad, :grosor, :lamina, :medidas,
-             :tipo_tela
+             :tipo_tela, :image
+
+  def image
+    return unless object.image.attached?
+
+    object.image.blob.attributes
+      .slice('filename', 'byte_size')
+      .merge(url: image_url)
+      .tap { |attrs| attrs['name'] = attrs.delete('filename')}
+  end
+
+  def image_url
+    url_for(object.image)
+  end
 end

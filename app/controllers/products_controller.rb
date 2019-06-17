@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
         else
             products= Product.paginate(page: params[:page], per_page: 15)
         end
-        render json:products, status: 200
+        render json:products.all.with_attached_image, status: 200
     end
     
     #get
@@ -51,7 +51,7 @@ class ProductsController < ApplicationController
 
     private
     def user_params
-        params.require(:product).permit(:nombre, :categoria, :descripcion, :medidas, :grosor, :densidad, :tipo_tela, :lamina, :cassata, :valor)
+        params.require(:product).permit(:nombre, :categoria, :descripcion, :medidas, :grosor, :densidad, :tipo_tela, :lamina, :cassata, :valor, :image)
     end
 
     def filtering_params
