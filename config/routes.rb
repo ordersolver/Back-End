@@ -66,6 +66,7 @@ Rails.application.routes.draw do
   put "rols/updated"
   delete "rols/destroy"
   
+  post "google_token" => "google_login#verify"
   
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

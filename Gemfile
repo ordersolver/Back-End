@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.4.6'
-#ruby '2.6.1'
+#ruby '2.4.6'
+ruby '2.6.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'sqlite3'
 gem 'pg'
 
 # Use Puma as the app server
@@ -21,6 +21,8 @@ gem 'faker', require: false
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'active_model_serializers'
+
+gem "aws-sdk-s3", require: false
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -55,3 +57,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "prawn", "~> 2.2"
 
 gem "prawn-table", "~> 0.2.2"
+gem "httparty"

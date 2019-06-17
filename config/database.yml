@@ -6,25 +6,25 @@
 #
 
 #PARA DESARROLLO EN LOCAL
-default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+#default: &default
+#  adapter: sqlite3
+#  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#  timeout: 5000
 
 #PARA HEROKU
-#default: &default
-#  adapter: postgresql
-#  encoding: unicode
+default: &default
+  adapter: postgresql
+  encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-#  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
   #PARA DESARROLLO LOCAL
-  database: db/development.sqlite3
+#  database: db/development.sqlite3
   #PARA HEROKU
-  #database: ordersolver_development
+  database: ordersolver_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

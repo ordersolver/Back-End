@@ -2,7 +2,7 @@
 #
 # Table name: products
 #
-#  id          :integer          not null, primary key
+#  id          :bigint           not null, primary key
 #  cassata     :text
 #  categoria   :text
 #  densidad    :text
@@ -18,6 +18,7 @@
 #
 
 class Product < ApplicationRecord
+    has_one_attached :image
     has_and_belongs_to_many :orders
     validates_associated :orders
 

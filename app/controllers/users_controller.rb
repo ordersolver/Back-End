@@ -10,7 +10,7 @@ class UsersController < ApplicationController
             users= User.includes(:rols).paginate(page: params[:page], per_page: 15)
         end
         
-        render json:users, status: 200
+        render json:users.all.with_attached_avatar, status: 200
     end
     
     #get
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:id, :tipo_documento, :no_id, :nombre, :apellidos, :email, :direccion, :telefono, :password, :password_confirmation)
+        params.require(:user).permit(:id, :tipo_documento, :no_id, :nombre, :apellidos, :email, :direccion, :telefono, :password, :password_confirmation, :avatar)
     end
 
 end
