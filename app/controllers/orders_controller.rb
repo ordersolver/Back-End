@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-    before_action :authenticate_user, only: [:create, :show, :updated, :destroy]
+    before_action :authenticate_user, only: [:index,:create, :show, :updated, :destroy]
 
     def index
         if params[:per_page]
