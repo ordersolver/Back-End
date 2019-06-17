@@ -50,6 +50,37 @@ class OrdersController < ApplicationController
         order.destroy
     end
 
+    def genpdf
+      respond_to do |format|
+        format.html
+        format.pdf do
+          pdf = CotizacionPdf.new(params[:_json])
+          send_data pdf.render,
+                    filename: "Cotizacion.pdf",
+                    type: 'application/pdf',
+                    disposition: 'inline'
+        end
+      end
+    end
+
+    def confirmation_email
+        @user = User.find(params[:id_user])
+        @order = Order.find(params[:id_order])
+        OrderMailer.orderconfirmation_email(@user,@order).deliver
+    end
+
+    def entregado_email
+        @user = User.find(params[:id_user])
+        @order = Order.find(params[:id_order])
+        OrderMailer.pedidoentregado_email(@user,@order).deliver
+    end
+
+    def problem_email
+        @user = User.find(params[:id_user])
+        @order = Order.find(params[:id_order])
+        OrderMailer.orderproblem_email(@user,@order).deliver
+    end
+
     def user_params
         params.require(:order).permit(:fecha, :estado, :direccion_entrega, :valor, :user_id)
     end

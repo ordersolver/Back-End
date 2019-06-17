@@ -1,0 +1,18 @@
+<ht>Hola <%= @user.nombre %></ht>
+<p>
+  Lamentamos informarte que estamos teniendo problemas para entregar tu pedido,
+  esto puede deberse a varios motivos, pero no te preocupes estamos trabajando
+  para solucionar el inconveniente.<br>
+  A continuacion encontraras un resumen del estado actual de tu pedido:<br>
+  Fecha de solicitud: <%= @order.fecha.strftime("%d/%m/%Y") %> <br>
+  Estado del pedido: <%= @order.estado %> <br>
+  Direccion de entrega: <%= @order.direccion_entrega %> <br>
+  Valor total del pedido: <%= @order.valor %> <br><br>
+
+  Pronto nos estaremos comunicando nuevamente para informarte sobre la nueva fecha de
+  despacho de tu pedido. Si quieres comunicarte con nosotros puedes hacerlo en la linea
+  xxxxxxxx.<br><br>
+
+  Recuerda que espumas M & M es más y mejor descanso.
+
+</p>

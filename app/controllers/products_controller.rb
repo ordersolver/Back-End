@@ -8,18 +8,22 @@ class ProductsController < ApplicationController
         else
             products= Product.paginate(page: params[:page], per_page: 15)
         end
-        render json:products, status: 200
+        render json:products.all.with_attached_image, status: 200
     end
     
     #get
     def show
+      #product = Product.find(params[:id])
         @products = Product.where(nil)
         filtering_params().each do |key, value|
+          if key == "nombre"
+            key="starts_with"
+          end
           @products = @products.public_send(key, value) if value.present? and key.present?
         end
         if @products != Product.where(nil)
             render json:@products, status: 200
-        end         
+        end
     end
 
     def create
@@ -47,7 +51,7 @@ class ProductsController < ApplicationController
 
     private
     def user_params
-        params.require(:product).permit(:nombre, :categoria, :descripcion, :medidas, :grosor, :densidad, :tipo_tela, :lamina, :cassata, :valor)
+        params.require(:product).permit(:nombre, :categoria, :descripcion, :medidas, :grosor, :densidad, :tipo_tela, :lamina, :cassata, :valor, :image)
     end
 
     def filtering_params

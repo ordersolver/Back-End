@@ -45,5 +45,4 @@ class GoogleLoginController < ApplicationController
             return true
         end
     end
-
 end

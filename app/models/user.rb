@@ -17,6 +17,7 @@
 #
 
 class User < ApplicationRecord
+    has_one_attached :avatar
     has_secure_password
     has_many :orders
     has_and_belongs_to_many :rols
@@ -32,6 +33,5 @@ class User < ApplicationRecord
     validates :no_id, uniqueness: true
     validates :email, uniqueness: true
     validates :google_id, uniqueness: true
-
     scope :google_id, ->(google_id) { where google_id: google_id }
 end
