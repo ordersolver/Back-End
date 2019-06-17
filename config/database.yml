@@ -4,12 +4,14 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
+
+#PARA DESARROLLO EN LOCAL
 #default: &default
 #  adapter: sqlite3
 #  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 #  timeout: 5000
 
-
+#PARA HEROKU
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -19,6 +21,9 @@ default: &default
 
 development:
   <<: *default
+  #PARA DESARROLLO LOCAL
+#  database: db/development.sqlite3
+  #PARA HEROKU
   database: ordersolver_development
 
 # Warning: The database defined as "test" will be erased and

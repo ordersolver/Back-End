@@ -1,0 +1,16 @@
+<ht>Hola <%= @user.nombre %> !</ht>
+<p>
+  Te informamos que tu pedido ya fue entregado con exito en la direccion que nos indicaste.<br>
+  A continuacion encontraras un resumen de tu pedido:<br>
+  Fecha de solicitud: <%= @order.fecha.strftime("%d/%m/%Y") %> <br>
+  Estado del pedido: <%= @order.estado %> <br>
+  Direccion de entrega: <%= @order.direccion_entrega %> <br>
+  Valor total del pedido: <%= @order.valor %> <br><br>
+
+  Si tienes alguna inquietud con respecto a tu pedido puedes comunicarte con nosotros en la linea
+  xxxxxxxx.<br><br>
+
+  Esperamos que disfrutes de tus productos y deseamos volver a verte pronto.<br>
+  Recuerda que espumas M & M es más y mejor descanso.
+
+</p>

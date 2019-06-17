@@ -2,7 +2,7 @@
 #
 # Table name: rols
 #
-#  id          :bigint           not null, primary key
+#  id          :integer          not null, primary key
 #  descripcion :string
 #  rol_name    :string
 #  created_at  :datetime         not null

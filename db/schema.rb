@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 2019_06_14_153634) do
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
-
   create_table "orders", force: :cascade do |t|
     t.datetime "fecha"
     t.string "estado"
