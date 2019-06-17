@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
+#  id              :bigint           not null, primary key
 #  apellidos       :text
 #  direccion       :text
 #  email           :string
@@ -12,6 +12,7 @@
 #  tipo_documento  :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  google_id       :text
 #  no_id           :string
 #
 
@@ -31,4 +32,6 @@ class User < ApplicationRecord
     validates :telefono, numericality: { only_integer: true }, length: { in: 7..10 }
     validates :no_id, uniqueness: true
     validates :email, uniqueness: true
+    
+    scope :google_id, ->(google_id) { where google_id: google_id }
 end

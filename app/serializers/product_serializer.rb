@@ -2,7 +2,7 @@
 #
 # Table name: products
 #
-#  id          :integer          not null, primary key
+#  id          :bigint           not null, primary key
 #  cassata     :text
 #  categoria   :text
 #  densidad    :text
