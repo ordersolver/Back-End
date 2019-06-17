@@ -69,6 +69,18 @@ class OrdersController < ApplicationController
         OrderMailer.orderconfirmation_email(@user,@order).deliver
     end
 
+    def entregado_email
+        @user = User.find(params[:id_user])
+        @order = Order.find(params[:id_order])
+        OrderMailer.pedidoentregado_email(@user,@order).deliver
+    end
+
+    def problem_email
+        @user = User.find(params[:id_user])
+        @order = Order.find(params[:id_order])
+        OrderMailer.orderproblem_email(@user,@order).deliver
+    end
+
     def user_params
         params.require(:order).permit(:fecha, :estado, :direccion_entrega, :valor, :user_id)
     end
