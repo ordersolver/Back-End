@@ -32,6 +32,6 @@ class User < ApplicationRecord
     validates :telefono, numericality: { only_integer: true }, length: { in: 7..10 }
     validates :no_id, uniqueness: true
     validates :email, uniqueness: true
-    validates :google_id, uniqueness: true
+    #validates :google_id, uniqueness: true
     scope :google_id, ->(google_id) { where google_id: google_id }
 end
