@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
     def create
         user = User.new(user_params)
-        user.rols<<Rol.find(1)
+        user.rols<<Rol.find(2)
         if user.save
             render json: user,status:201
         else
