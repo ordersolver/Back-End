@@ -71,6 +71,8 @@ Rails.application.routes.draw do
   get "total_sales" => "admin_statistics#totalSales"
   get "user_total_orders" => "user_statistics#numOfOrders"
   get "user_spent_money" => "user_statistics#spentMoney"
+  get "most_sold_product" => "admin_statistics#mostSold"
+  get "user_most_sold" => "user_statistics#mostSold"
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
