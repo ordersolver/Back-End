@@ -69,6 +69,8 @@ Rails.application.routes.draw do
   post "google_token" => "google_login#verify"
   get "number_of_orders" => "admin_statistics#numberOfOrders"
   get "total_sales" => "admin_statistics#totalSales"
+  get "user_total_orders" => "user_statistics#numOfOrders"
+  get "user_spent_money" => "user_statistics#spentMoney"
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
