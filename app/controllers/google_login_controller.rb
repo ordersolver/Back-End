@@ -7,13 +7,12 @@ class GoogleLoginController < ApplicationController
         if res.code==200
             if valid_aud?(res)
                 sub=JSON.parse(res.to_s)['sub']
-                puts sub
+                puts res
                 user=User.google_id(sub).first
                 puts user
                 if user
-                    userToken = UserTokenController.new
-                    auth=userToken.create({"auth"=>{email=>user.email,password=>user.password}})
-                    render json:auth, status:200
+                    token={token:Knock::AuthToken.new(payload:{sub:user.id}).token}
+                    render json:token, status:200
                 else
                     error={error:"usuario no registrado"}
                     render json:error

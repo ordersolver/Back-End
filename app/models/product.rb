@@ -22,7 +22,7 @@ class Product < ApplicationRecord
     has_and_belongs_to_many :orders
     validates_associated :orders
 
-    validates :nombre, presence: true, format: { with: /\A[a-zA-Z\s]+\z/,
+    validates :nombre, presence: true, format: { with: /\A[a-zA-ZÑñ\s]+\z/,
     message: "only allows letters" }
     validates :categoria, format: { with: /\A[\D]+\z/,
     message: "only allows letters" }
@@ -32,6 +32,6 @@ class Product < ApplicationRecord
     scope :nombre, ->(nombre) { where nombre: nombre }
     scope :categoria, ->(categoria) { where categoria: categoria }
     scope :id, ->(id) { where id: id }
-    scope :starts_with, ->(nombre){where "nombre like ? ","%#{nombre}%" }
+    scope :starts_with, ->(nombre){where "lower(nombre) like ? ","%#{nombre.downcase}%" }
 
 end

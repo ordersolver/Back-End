@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-    before_action :authenticate_user, only: [  :updated]
+    before_action :authenticate_user, only: [:updated, :destroy]
     
     #get
     def index
