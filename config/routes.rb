@@ -67,7 +67,8 @@ Rails.application.routes.draw do
   delete "rols/destroy"
   
   post "google_token" => "google_login#verify"
-  get "number_of_orders" => "statistics#numberOfOrders"
+  get "number_of_orders" => "admin_statistics#numberOfOrders"
+  get "total_sales" => "admin_statistics#totalSales"
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
