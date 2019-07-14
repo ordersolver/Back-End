@@ -73,6 +73,12 @@ Rails.application.routes.draw do
   get "user_spent_money" => "user_statistics#spentMoney"
   get "most_sold_product" => "admin_statistics#mostSold"
   get "user_most_sold" => "user_statistics#mostSold"
+  get "number_of_orders_pdf" => "admin_statistics#numberOfOrdersPdf"
+  get "total_sales_pdf" => "admin_statistics#totalSalesPdf"
+  get "most_sold_product_pdf" => "admin_statistics#mostSoldPdf"
+  get "user_total_orders_pdf" => "user_statistics#numOfOrdersPdf"
+  get "user_spent_money_pdf" => "user_statistics#spentMoneyPdf"
+  get "user_most_sold_pdf" => "user_statistics#mostSoldPdf"
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

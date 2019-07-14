@@ -31,7 +31,7 @@ class OrderSerializer < ActiveModel::Serializer
     
     def products
         self.object.products.map do |product|
-            {productId: product.id, productName: product.nombre }
+            {productId: product.id, productName: product.nombre, productValue: product.valor }
         end 
     end
 end
