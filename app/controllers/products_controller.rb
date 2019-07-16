@@ -51,7 +51,7 @@ class ProductsController < ApplicationController
 
     private
     def user_params
-        params.require(:product).permit(:nombre, :categoria, :descripcion, :medidas, :grosor, :densidad, :tipo_tela, :lamina, :cassata, :valor, :image)
+        params.require(:product).permit(:nombre, :categoria, :descripcion, :medidas, :grosor, :densidad, :tipo_tela, :lamina, :cassata, :valor, :photo)
     end
 
     def filtering_params

@@ -8,17 +8,17 @@
 #  email           :string
 #  nombre          :text
 #  password_digest :string
+#  photo           :text
 #  telefono        :text
 #  tipo_documento  :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  google_id       :text
 #  no_id           :string
 #
 
 class UserSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-  attributes :id, :nombre, :apellidos, :tipo_documento, :no_id, :email, :direccion, :telefono, :rols, :avatar
+  attributes :id, :nombre, :apellidos, :tipo_documento, :no_id, :email, :direccion, :telefono, :rols, :photo
 
   def avatar
     return unless object.avatar.attached?

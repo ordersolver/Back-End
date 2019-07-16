@@ -9,15 +9,11 @@
 #  valor             :bigint
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  user_id           :bigint
+#  user_id           :integer
 #
 # Indexes
 #
 #  index_orders_on_user_id  (user_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (user_id => users.id)
 #
 
 class Order < ApplicationRecord

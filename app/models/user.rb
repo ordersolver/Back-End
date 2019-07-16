@@ -8,11 +8,11 @@
 #  email           :string
 #  nombre          :text
 #  password_digest :string
+#  photo           :text
 #  telefono        :text
 #  tipo_documento  :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  google_id       :text
 #  no_id           :string
 #
 

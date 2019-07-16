@@ -11,6 +11,7 @@
 #  lamina      :text
 #  medidas     :text
 #  nombre      :text
+#  photo       :text
 #  tipo_tela   :text
 #  valor       :bigint
 #  created_at  :datetime         not null
@@ -21,7 +22,7 @@ class ProductSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
   attributes :id, :nombre, :categoria, :descripcion, :valor,
              :cassata, :densidad, :grosor, :lamina, :medidas,
-             :tipo_tela, :image
+             :tipo_tela, :photo
 
   def image
     return unless object.image.attached?

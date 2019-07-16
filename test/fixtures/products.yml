@@ -11,6 +11,7 @@
 #  lamina      :text
 #  medidas     :text
 #  nombre      :text
+#  photo       :text
 #  tipo_tela   :text
 #  valor       :bigint
 #  created_at  :datetime         not null
