@@ -23,7 +23,7 @@ class Product < ApplicationRecord
     has_and_belongs_to_many :orders
     validates_associated :orders
 
-    validates :nombre, presence: true, format: { with: /\A[a-zA-ZÑñ\s]+\z/,
+    validates :nombre, presence: true, format: { with: /\A[a-zA-ZÑñ0-9\s]+\z/,
     message: "only allows letters" }
     validates :categoria, format: { with: /\A[\D]+\z/,
     message: "only allows letters" }
