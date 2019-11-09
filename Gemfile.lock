@@ -77,7 +77,7 @@ GEM
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.1.5)
-    crass (1.0.4)
+    crass (1.0.5)
     css_parser (1.7.0)
       addressable
     erubi (1.8.0)
@@ -97,7 +97,7 @@ GEM
       bcrypt (~> 3.1)
       jwt (~> 1.5)
       rails (>= 4.2)
-    loofah (2.2.3)
+    loofah (2.3.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -115,7 +115,7 @@ GEM
     msgpack (1.2.10)
     multi_xml (0.6.0)
     nio4r (2.3.1)
-    nokogiri (1.10.3)
+    nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     pdf-core (0.7.0)
     pg (1.1.4)
