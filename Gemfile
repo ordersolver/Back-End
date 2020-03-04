@@ -11,7 +11,7 @@ gem 'rails', '~> 5.2.3'
 gem 'pg'
 
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 gem 'faker', require: false
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
